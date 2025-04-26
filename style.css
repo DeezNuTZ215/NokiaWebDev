@@ -1,0 +1,11 @@
+img{
+    width: 200px;
+    border: 100px navy;
+
+}
+body{
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    background: skyblue;
+    color: blue;
+}
