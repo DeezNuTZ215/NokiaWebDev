@@ -1,17 +1,120 @@
-<!-- universal header -->
-
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="style.css"/> <!-- follow this to link html file to css  -->
-    </head>
-    <body>
-        <img src = "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"/> <!-- copy image adress-->
-        <h1>Elephant Photo </h1> <!-- h1 = header -->
-        <p1> Elephants have a long nose and big tusks </p1>  <!-- p1 = paragraph  -->
-        <div>
-            <p2> Cool Logo below:  </p2>
+<html lang="en">
+<head>
+    <link rel="icon" href="cropped-Ghostfire-Gaming-Favicon.webp" type="image/webp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Gaming Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_2.0.css">
+</head>
+
+<body> 
+    <div class="row">
+        <!-- VIDEO SECTION -->
+        <div id="video-section" class="column video-section">
+          <h1>Video Chat</h1>
+          <!-- iframe will be injected here -->
         </div>
-        <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Nokia_2023.svg/1024px-Nokia_2023.svg.png"/>
-    </body>
+    
+        <!-- GAMES SECTION -->
+        <div class="column games-section">
+          <h2>Games for Young People</h2>
+          <div id="games-list"></div>
+
+          <h2>Games for Everyone</h2>
+          <div id="old-games-list"></div>
+
+          <button id="refresh-btn">Refresh Games</button>
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <div class="about-us">
+      <h2>About Us</h2>
+      <p>We created this platform to connect people of all ages through games and video chat. 
+      Whether you're young or young at heart, enjoy a fun and safe online experience here with friends and family. 
+      Let's play, laugh, and stay close — no matter where we are!</p>
+    </div>
+
+   <!-- AI Chat Button -->
+<button id="ask-ai-btn" class="outer-cont flex" style="background: rgb(21, 126, 108); border: 2px solid white; cursor: pointer; position: fixed; bottom: 20px; right: 20px; padding: 10px 20px; border-radius: 9999px; box-shadow: 0 2px 5px rgba(123,100,255,0.3); z-index: 1000; display: flex; align-items: center; justify-content: center; gap: 5px; font-family: Arial, Helvetica, sans-serif, 'Times New Roman', Times, serif, Times, serif; font-size: 16px; color: #fff;">
+  <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none">
+      <!-- SVG paths here -->
+    </g>
+  </svg>
+  <span>Need Help?</span>
+</button>
+
+<!-- AI Chat Dialog -->
+<dialog id="ai-chat" style="border: 2px solid #147b74; border-radius: 10px; padding: 20px; width: 300px; position: fixed; margin: 0;">
+  <div id="drag-header" style="display: flex; justify-content: space-between; align-items: center;">
+    <h2 style="margin: 0;">Need Help?</h2>
+    <button id="close-chat" style="background: transparent; border: none; font-size: 20px; cursor: pointer;">X</button>
+  </div>
+  <div id="ai-chat-messages" style="height: 300px; overflow-y: auto; margin: 10px 0; border: 1px solid #ccc; padding: 10px; background: #f9f9f9;"></div>
+  <form id="ai-chat-form" style="display: flex; gap: 10px; margin-top: 10px;">
+    <input type="text" id="ai-chat-input" placeholder="Ask me anything..." style="flex: 1; padding: 10px;">
+    <button type="submit">Send</button>
+  </form>
+</dialog>
+
+
+<script>
+      const aiButton = document.getElementById('ask-ai-btn');
+      const aiChat = document.getElementById('ai-chat');
+      const closeChatBtn = document.getElementById('close-chat');
+
+      aiButton.addEventListener('click', () => {
+        if (aiChat.style.display === 'flex') {
+          aiChat.style.display = 'none';
+        } else {
+          aiChat.style.display = 'flex';
+          aiChat.style.flexDirection = 'column';
+        }
+      });
+
+      closeChatBtn.addEventListener('click', () => {
+        aiChat.style.display = 'none';
+      });
+    </script>    
+
+    <script src="refresh.js"></script>
+
+    <script>
+
+    
+aiButton.addEventListener('click', () => {
+    // Get button position
+    const btnRect = aiButton.getBoundingClientRect();
+
+    // Show dialog
+    aiChat.showModal();
+
+    // Calculate the left position, ensuring it doesn't overflow on the right side of the screen
+    let leftPosition = btnRect.left + window.scrollX;
+
+    // Check if the dialog goes beyond the right edge of the screen
+    const dialogWidth = aiChat.offsetWidth;
+    const screenWidth = window.innerWidth;
+
+    if (leftPosition + dialogWidth > screenWidth) {
+      // If it does, adjust the left position to stay within the screen
+      leftPosition = screenWidth - dialogWidth - 20; // 20px padding from the right edge
+    }
+
+    // Position the dialog above the button
+    aiChat.style.left = leftPosition + "px";
+    aiChat.style.top = (btnRect.top + window.scrollY - aiChat.offsetHeight - 10) + "px"; // 10px gap
+    aiChat.style.bottom = "auto"; 
+    aiChat.style.right = "auto";
+  });
+
+  closeChatBtn.addEventListener('click', () => {
+    aiChat.close();
+      });
+    </script>
+    
+</body> 
 </html>
