@@ -15,11 +15,11 @@
 
 ## 🛠️ Built With
 
-- [Python](https://example.com)
-- [HTML](https://example.com)
-- [CSS](https://example.com)
-- [JavaScript](https://example.com)
-- [Django](https://example.com)
+- [Python](https://www.python.org/)
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Django](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/Django/Sessions)
 
 
 
